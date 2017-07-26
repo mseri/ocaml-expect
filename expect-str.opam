@@ -13,4 +13,5 @@ build-test: ["jbuilder" "runtest" "-p" name]
 depends: [
   "jbuilder" {build}
   "expect"
+  "ounit" {test}
 ]
