@@ -4,39 +4,5 @@
   (libraries (expect oUnit))))
 
 (executable
- ((name test)
-  (modules (test))
-  (libraries (expect test_common threads oUnit))))
-
-(executable
- ((name test_pcre)
-  (modules (test_pcre))
-  (libraries (expect expect-pcre test_common threads oUnit))))
-
-(executable
- ((name test_str)
-  (modules (test_str))
-  (libraries (expect expect-str test_common threads oUnit))))
-
-
-(executable
  ((name qa)
   (modules (qa))))
-
-(alias
- ((name   runtest)
-  (package expect)
-  (deps   (test.exe qa.exe))
-  (action (run ${<}))))
-
-(alias
- ((name   runtest)
-  (package expect-pcre)
-  (deps   (test_pcre.exe qa.exe))
-  (action (run ${<}))))
-
-  (alias
- ((name   runtest)
-  (package expect-str)
-  (deps   (test_str.exe qa.exe))
-  (action (run ${<}))))

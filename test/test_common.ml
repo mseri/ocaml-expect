@@ -25,7 +25,7 @@ open OUnit2
 open Expect
 
 let timeout = 0.1
-let qa = "./qa.exe"
+let qa = "../qa.exe"
 
 let printer_exit_code =
   function

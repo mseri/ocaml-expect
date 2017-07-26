@@ -1,6 +1,6 @@
 2017-07-26 Marcello Seri
 
-  * Version 0.0.4
+  * Version 0.0.5
   * Dropped dependency from Batteries
   * Port to jbuilder
 

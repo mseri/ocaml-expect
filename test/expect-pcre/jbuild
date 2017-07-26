@@ -1,0 +1,10 @@
+(executable
+ ((name test_pcre)
+  (modules (test_pcre))
+  (libraries (expect expect-pcre test_common threads oUnit))))
+
+(alias
+ ((name   runtest)
+  (package expect-pcre)
+  (deps   (test_pcre.exe ../qa.exe))
+  (action (run ${<}))))

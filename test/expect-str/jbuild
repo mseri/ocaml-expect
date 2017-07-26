@@ -1,0 +1,10 @@
+(executable
+ ((name test_str)
+  (modules (test_str))
+  (libraries (expect expect-str test_common threads oUnit))))
+
+(alias
+ ((name   runtest)
+  (package expect-str)
+  (deps   (test_str.exe ../qa.exe))
+  (action (run ${<}))))
