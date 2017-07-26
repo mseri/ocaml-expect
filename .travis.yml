@@ -1,14 +1,16 @@
 language: c
 sudo: false
 services:
-      - docker
+  - docker
 install: wget https://raw.githubusercontent.com/ocaml/ocaml-travisci-skeleton/master/.travis-docker.sh
 script: bash -ex ./.travis-docker.sh
 env:
-      global:
-          - PINS="expect:. expect-str:. expect-pcre:."
-      matrix:
-            - PACKAGE="expect" DISTRO="debian-testing" OCAML_VERSION="4.02.3"
-            - PACKAGE="expect-str" DISTRO="debian-testing" OCAML_VERSION="4.02.3"
-            - PACKAGE="expect-pcre" DISTRO="debian-testing" OCAML_VERSION="4.02.3"
-
+  global:
+    - PINS="expect:. expect-str:. expect-pcre:."
+  matrix:
+    - PACKAGE="expect" DISTRO="debian-testing" OCAML_VERSION="4.02.3"
+    - PACKAGE="expect-str" DISTRO="debian-testing" OCAML_VERSION="4.02.3"
+    - PACKAGE="expect-pcre" DISTRO="debian-testing" OCAML_VERSION="4.02.3"
+    - PACKAGE="expect" DISTRO="debian-testing" OCAML_VERSION="4.04.0"
+    - PACKAGE="expect-str" DISTRO="debian-testing" OCAML_VERSION="4.04.0"
+    - PACKAGE="expect-pcre" DISTRO="debian-testing" OCAML_VERSION="4.04.0"
