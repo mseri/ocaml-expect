@@ -1,0 +1,4 @@
+(library
+ ((name expectPcre)
+  (public_name expect-pcre)
+  (libraries (expect pcre))))

@@ -1,0 +1,14 @@
+(executable
+ ((name test)
+  (modules (test))
+  (libraries (expect expect-str expect-pcre threads oUnit))))
+
+(executable
+ ((name qa)
+  (modules (qa))))
+
+(alias
+ ((name   runtest)
+  (package expect-str)
+  (deps   (test.exe qa.exe))
+  (action (run ${<}))))

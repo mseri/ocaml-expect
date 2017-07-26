@@ -1,0 +1,4 @@
+(library
+ ((name expectStr)
+  (public_name expect-str)
+  (libraries (expect str))))

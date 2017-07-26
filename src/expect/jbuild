@@ -1,0 +1,4 @@
+(library 
+ ((name expect)
+  (public_name expect)
+  (libraries (unix))))
