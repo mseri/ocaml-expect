@@ -1,5 +1,13 @@
 opam-version: "1.2"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
+authors: [
+  "Marcello Seri"
+  "Sylvain Le Gall"
+  "OCamlCore SARL"
+]
+maintainer: "Marcello Seri <marcello.seri@citrix.com>"
+homepage:     "https://github.com/mseri/ocaml-expect"
+bug-reports:  "https://github.com/mseri/ocaml-expect/issues"
+dev-repo:     "https://github.com/mseri/ocaml-expect.git"
 build: ["jbuilder" "build" "-p" name "-j" jobs]
 build-test: ["jbuilder" "runtest" "-p" name]
 depends: [
