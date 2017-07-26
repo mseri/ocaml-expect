@@ -31,72 +31,22 @@ open Test_common
 let tests =
   "Expect" >:::
   [
-    "oasis1" >::
+    "std-pcre" >::
     (fun test_ctxt ->
-       with_qa test_ctxt "oasis1"
+       with_qa test_ctxt "std"
          (fun t ->
             assert_bool
-              "???name "
-              (expect t
-                 [`Exact "???name ", true]
+              "Ask name"
+              (ExpectPcre.expect t
+                 [`Pat "What's your name\\? ", true]
                  false);
-            send t "test\n"));
 
-    "oasis1-withfmatch" >::
-    (fun test_ctxt ->
-       with_qa test_ctxt "oasis1"
-         (fun t ->
+            send t "Sylvain\n";
+
             assert_bool
-              "???name "
-              (expect t
-                 ~fmatches:[(fun str ->
-                               if str = "???name " then
-                                 Some true
-                               else
-                                 None)]
-                 []
-                 false);
-            send t "test\n"));
-
-    "oasis1-timeout" >::
-    (fun test_ctxt ->
-       with_qa test_ctxt ~exit_code:(Unix.WEXITED 2) "oasis1"
-         (fun t ->
-            let mtx =
-              Mutex.create ()
-            in
-            let finished =
-              ref false
-            in
-            let th =
-              Thread.create
-                (fun () ->
-                   let _b : bool =
-                     expect t [`Exact "toto", true] false
-                   in
-                     Mutex.lock mtx;
-                     finished := true;
-                     Mutex.unlock mtx)
-                ()
-            in
-            let is_finished =
-              Thread.delay (5. *. timeout);
-              Mutex.lock mtx;
-              !finished
-            in
-              Mutex.unlock mtx;
-              if not is_finished then
-                assert_failure "Process didn't timeout";
-              Thread.join th));
-
-    "stderr" >::
-    (fun test_ctxt ->
-       with_qa test_ctxt ~use_stderr:true "stderr"
-         (fun t ->
-            assert_bool
-              "error"
-              (expect t
-                 [`Exact "error", true]
+              "Answer hello"
+              (ExpectPcre.expect t
+                 [`Pat "Hello Sylvain", true]
                  false)));
   ]
 
